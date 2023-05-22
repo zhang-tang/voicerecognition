@@ -1,7 +1,7 @@
 
 
 
-//% weight=100 color=#9999FF icon="\uf136" block=Voice Recognition
+//% weight=100 color=#9999FF icon="\uf136" block="Voice Recognition"
 namespace voiceRecognition {
 
     export enum MUTE {
@@ -280,13 +280,13 @@ namespace voiceRecognition {
         W131 = 131,
         //% blockId="voiceRecognition_W132" block="Fan mode"
         W132 = 132,
-        //% blockId="voiceRecognition_W133" block="Enable blowing up & down"
+        //% blockId="voiceRecognition_W133" block="Enable blowing up and down"
         W133 = 133,
-        //% blockId="voiceRecognition_W134" block="Disable blowing up & down"
+        //% blockId="voiceRecognition_W134" block="Disable blowing up and down"
         W134 = 134,
-        //% blockId="voiceRecognition_W135" block="Enable blowing right & left"
+        //% blockId="voiceRecognition_W135" block="Enable blowing right and left"
         W135 = 135,
-        //% blockId="voiceRecognition_W136" block="Disable blowing right & left"
+        //% blockId="voiceRecognition_W136" block="Disable blowing right and left"
         W136 = 136,
         //% blockId="voiceRecognition_W137" block="Open the window"
         W137 = 137,
@@ -335,7 +335,7 @@ namespace voiceRecognition {
         W200 = 200,
         //% blockId="voiceRecognition_W201" block="Learning command word"
         W201 = 201,
-        //% blockId="voiceRecognition_W202" block="	Re-learn"
+        //% blockId="voiceRecognition_W202" block="Re_learn"
         W202 = 202,
         //% blockId="voiceRecognition_W203" block="Exit learning"
         W203 = 203,
