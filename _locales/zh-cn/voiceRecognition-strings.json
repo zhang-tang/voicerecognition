@@ -181,6 +181,6 @@
     "voiceRecognition.checkWord2|block": "学习的命令词 %word ID",
     "voiceRecognition.checkWord3|block": "固定命令词 %word ID",
     "voiceRecognition.checkWord4|block": "学习词 %word ID",
-    "voiceRecognition|block": "语音识别|SEN0539"
+    "voiceRecognition|block": "语音识别（SEN0539）"
 
 }

@@ -1,7 +1,7 @@
 
 
 
-//% weight=100 color=#9999FF icon="\uf136" block="Voice Recognition"
+//% weight=100 color=#1ABC9C icon="\uf136" block="Voice Recognition (SEN0539)"
 namespace voiceRecognition {
 
     export enum MUTE {

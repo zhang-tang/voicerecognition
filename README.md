@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This module uses a new offline speech recognition chip. Built-in 135 commonly used fixed command entries, newly added command word self-learning ability, self-study command words can not be a voice, can be a mouth, a back finger, a cat meow, etc., support 17 self-study command words. The use of dual microphones makes the module have better anti-noise ability and longer recognition distance. The module comes with a calling and external calling interface, which can give real-time voice feedback of the recognition results. The module adopts I2C and UART two communication methods, gravity interface, taking into account Arduino Uno, Arduino Leonardo, Arduino MEGA, FireBeetle series controllers, Raspberry Pi, ESP32 and other main controls
+This module uses a new offline speech recognition chip. Built-in 135 commonly used fixed command entries, newly added command word self-learning ability, self-study command words can not be a voice, can be a mouth, a back finger, a cat meow, etc., support 17 self-study command words. The use of dual microphones makes the module have better anti-noise ability and longer recognition distance. The module comes with a calling and external calling interface, which can give real-time voice feedback of the recognition results. The module adopts I2C and UART two communication methods, gravity interface, taking into account Arduino Uno, Arduino Leonardo, Arduino MEGA, FireBeetle series controllers, Raspberry Pi, ESP32 and other main controls.
 
 [Purchase link]()
 
