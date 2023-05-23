@@ -1,31 +1,24 @@
 
-> 在 [https://zhang-tang.github.io/voicerecognition/](https://zhang-tang.github.io/voicerecognition/) 打开此页面
+# Voice Recognition Sensor
 
-## 用作扩展
+## Introduction
 
-此仓库可以作为 **插件** 添加到 MakeCode 中。
+This module uses a new offline speech recognition chip. Built-in 135 commonly used fixed command entries, newly added command word self-learning ability, self-study command words can not be a voice, can be a mouth, a back finger, a cat meow, etc., support 17 self-study command words. The use of dual microphones makes the module have better anti-noise ability and longer recognition distance. The module comes with a calling and external calling interface, which can give real-time voice feedback of the recognition results. The module adopts I2C and UART two communication methods, gravity interface, taking into account Arduino Uno, Arduino Leonardo, Arduino MEGA, FireBeetle series controllers, Raspberry Pi, ESP32 and other main controls
 
-* 打开 [https://makecode.microbit.org/](https://makecode.microbit.org/)
-* 点击 **新项目**
-* 点击齿轮图标菜单下的 **扩展**
-* 搜索 **https://github.com/zhang-tang/voicerecognition** 并导入
+[Purchase link]()
 
-## 编辑此项目 ![Build status badge](https://github.com/zhang-tang/voicerecognition/workflows/MakeCode/badge.svg)
+[Tutorial Links]()
 
-在 MakeCode 中编辑此仓库。
 
-* 打开 [https://makecode.microbit.org/](https://makecode.microbit.org/)
-* 点击 **导入**，然后点击 **导入 URL**
-* 粘贴 **https://github.com/zhang-tang/voicerecognition** 并点击导入
+## Basic usage
 
-## Blocks preview
 
-This image shows the blocks code from the last commit in master.
-This image may take a few minutes to refresh.
+## License
 
-![A rendered view of the blocks](https://github.com/zhang-tang/voicerecognition/raw/master/.github/makecode/blocks.png)
+MIT
 
-#### 元数据（用于搜索、渲染）
+Copyright (c) 2020, microbit/micropython Chinese community  
+
+## Supported targets
 
 * for PXT/microbit
-<script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>

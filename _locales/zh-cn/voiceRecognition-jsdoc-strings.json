@@ -1,0 +1,15 @@
+{
+    "voiceRecognition": "",
+    "voiceRecognition.init": "",
+    "voiceRecognition.setVolume": "",
+    "voiceRecognition.setMuteMode": "",
+    "voiceRecognition.setWakeTime": "",
+    "voiceRecognition.getWakeTime": "",
+    "voiceRecognition.playByCMDID": "",
+    "voiceRecognition.getCMDID": "",
+    "voiceRecognition.readCMDID": "",
+    "voiceRecognition.checkWord1": "",
+    "voiceRecognition.checkWord2": "",
+    "voiceRecognition.checkWord3": "",
+    "voiceRecognition.checkWord4": ""
+}

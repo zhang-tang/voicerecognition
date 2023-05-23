@@ -451,7 +451,7 @@ namespace voiceRecognition {
      */
 
     //% weight=60
-    //% blockId=voiceRecognition_checkWord1 block="word %word ID"
+    //% blockId=voiceRecognition_checkWord1 block="word1 %word ID"
     export function checkWord1(word: WakeupWords): number {
         return 100;
     }
@@ -461,7 +461,7 @@ namespace voiceRecognition {
      */
 
     //% weight=55
-    //% blockId=voiceRecognition_checkWord2 block="word %word ID"
+    //% blockId=voiceRecognition_checkWord2 block="word2 %word ID"
     export function checkWord2(word: LearningCommandWords): number {
         return 100;
     }
@@ -471,7 +471,7 @@ namespace voiceRecognition {
      */
 
     //% weight=50
-    //% blockId=voiceRecognition_checkWord3 block="word %word ID"
+    //% blockId=voiceRecognition_checkWord3 block="word3 %word ID"
     export function checkWord3(word: FixedCommandWords): number {
         return 100;
     }
@@ -481,7 +481,7 @@ namespace voiceRecognition {
      */
 
     //% weight=45
-    //% blockId=voiceRecognition_checkWord4 block="word %word ID"
+    //% blockId=voiceRecognition_checkWord4 block="word4 %word ID"
     export function checkWord4(word: LearningRelatedCommands): number {
         return 100;
     }

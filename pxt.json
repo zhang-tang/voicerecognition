@@ -1,6 +1,7 @@
 {
     "name": "voiceRecognition",
-    "description": "",
+    "description": "This module uses a new offline speech recognition chip.",
+    "license": "MIT",
     "dependencies": {
         "core": "*",
         "radio": "*",
@@ -9,6 +10,8 @@
     "files": [
         "main.blocks",
         "main.ts",
+        "_locales/zh-cn/voiceRecognition-strings.json",
+        "_locales/zh-cn/voiceRecognition-jsdoc-strings.json",
         "README.md",
         "voiceRecognition.ts"
     ],
