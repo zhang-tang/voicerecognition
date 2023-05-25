@@ -351,6 +351,78 @@ namespace voiceRecognition {
         W208 = 208
     }
 
+
+    const DF2301Q_I2C_ADDR                      = 0x64              // i2c address
+
+    const DF2301Q_I2C_REG_CMDID                 = 0x02              // 请求得到命令词ID的寄存器地址
+    const DF2301Q_I2C_REG_PLAY_CMDID            = 0x03              // 用命令词ID播放Audio的寄存器地址
+    const DF2301Q_I2C_REG_SET_MUTE              = 0x04              // 设置静音模式的寄存器
+    const DF2301Q_I2C_REG_SET_VOLUME            = 0x05              // 设置音量的寄存器
+    const DF2301Q_I2C_REG_WAKE_TIME             = 0x06              // 唤醒时间的寄存器地址
+
+    const DF2301Q_UART_BAUDRATE                 = 9600              // UART baud rate
+    const DF2301Q_UART_MSG_DATA_MAX_SIZE        = 8                 // 串口数据帧的最大数据长度
+
+    /*header*/
+    const DF2301Q_UART_MSG_HEAD_LOW             = 0xF4
+    const DF2301Q_UART_MSG_HEAD_HIGH            = 0xF5
+    const DF2301Q_UART_MSG_HEAD                 = ((DF2301Q_UART_MSG_HEAD_HIGH<<8)|DF2301Q_UART_MSG_HEAD_LOW)
+    /*tail*/
+    const DF2301Q_UART_MSG_TAIL                 = 0xFB
+    /*msgType*/
+    const DF2301Q_UART_MSG_TYPE_CMD_UP          = 0xA0
+    const DF2301Q_UART_MSG_TYPE_CMD_DOWN        = 0xA1
+    const DF2301Q_UART_MSG_TYPE_ACK             = 0xA2
+    const DF2301Q_UART_MSG_TYPE_NOTIFY          = 0xA3
+    /*msgCmd*/
+    const DF2301Q_UART_MSG_CMD_ASR_RESULT       = 0x91              //报告语音识别结果
+    const DF2301Q_UART_MSG_CMD_PLAY_VOICE       = 0x92              //播放本地播报音
+    const DF2301Q_UART_MSG_CMD_GET_FLASHUID     = 0x93              //读取FLASH的序列号
+    const DF2301Q_UART_MSG_CMD_GET_VERSION      = 0x94              //读取版本号
+    const DF2301Q_UART_MSG_CMD_RESET_MODULE     = 0x95              //复位语音模块
+    const DF2301Q_UART_MSG_CMD_SET_CONFIG       = 0x96              //设置
+    const DF2301Q_UART_MSG_CMD_ENTER_OTA_MODE   = 0x97              //进入升级模式
+    const DF2301Q_UART_MSG_CMD_NOTIFY_STATUS    = 0x9A              //事件通知
+    const DF2301Q_UART_MSG_CMD_ACK_COMMON       = 0xAA
+    /* !!! if user want add please add form DF2301Q_UART_MSG_CMD_USER_START*/
+    const DF2301Q_UART_MSG_CMD_USER_START       = 0xB0
+    /*msgData  msgCmd:DF2301Q_UART_MSG_CMD_PLAY_VOICE*/
+    const DF2301Q_UART_MSG_DATA_PLAY_START      = 0x80
+    const DF2301Q_UART_MSG_DATA_PLAY_PAUSE      = 0x81
+    const DF2301Q_UART_MSG_DATA_PLAY_RESUME     = 0x82
+    const DF2301Q_UART_MSG_DATA_PLAY_STOP       = 0x83
+    const DF2301Q_UART_MSG_DATA_PLAY_BY_VOICEID       = 0x90
+    const DF2301Q_UART_MSG_DATA_PLAY_BY_SEMANTIC_ID   = 0x91
+    const DF2301Q_UART_MSG_DATA_PLAY_BY_CMD_ID        = 0x92
+    /*msgData  msg_cmd:DF2301Q_UART_MSG_CMD_GET_VERSION*/
+    const DF2301Q_UART_MSG_DATA_VER_PROTOCOL    = 0x80              // 串口协议版本号
+    const DF2301Q_UART_MSG_DATA_VER_SDK         = 0x81              // SDK版本号
+    const DF2301Q_UART_MSG_DATA_VER_ASR         = 0x82              // ASR组件版本号
+    const DF2301Q_UART_MSG_DATA_VER_PREPROCESS  = 0x83              // 语音预处理算法版本号
+    const DF2301Q_UART_MSG_DATA_VER_PLAYER      = 0x84              // 播放器版本号
+    const DF2301Q_UART_MSG_DATA_VER_APP         = 0x8A              // 应用程序版本号
+    /*msgData  msg_cmd:DF2301Q_UART_MSG_CMD_NOTIFY_STATUS*/
+    const DF2301Q_UART_MSG_DATA_NOTIFY_POWERON       = 0xB0
+    const DF2301Q_UART_MSG_DATA_NOTIFY_WAKEUPENTER   = 0xB1
+    const DF2301Q_UART_MSG_DATA_NOTIFY_WAKEUPEXIT    = 0xB2
+    const DF2301Q_UART_MSG_DATA_NOTIFY_PLAYSTART     = 0xB3
+    const DF2301Q_UART_MSG_DATA_NOTIFY_PLAYEND       = 0xB4
+    /*msgData msg_cmd:DF2301Q_UART_MSG_CMD_SET_CONFIG*/
+    const DF2301Q_UART_MSG_CMD_SET_VOLUME        = 0x80
+    const DF2301Q_UART_MSG_CMD_SET_ENTERWAKEUP   = 0x81
+    const DF2301Q_UART_MSG_CMD_SET_PRT_MID_RST   = 0x82
+    const DF2301Q_UART_MSG_CMD_SET_MUTE          = 0x83
+    const DF2301Q_UART_MSG_CMD_SET_WAKE_TIME     = 0x84
+    const DF2301Q_UART_MSG_CMD_SET_NEEDACK       = 0x90
+    const DF2301Q_UART_MSG_CMD_SET_NEEDSTRING    = 0x91
+    /*ACK error code*/
+    const DF2301Q_UART_MSG_ACK_ERR_NONE          = 0x0
+    const DF2301Q_UART_MSG_ACK_ERR_CHECKSUM      = 0xff
+    const DF2301Q_UART_MSG_ACK_ERR_NOSUPPORT     = 0xfe
+
+    let deviceAddress = 0;
+    let saveCmdID = 0;
+
     /**
      * 
      */
@@ -358,7 +430,7 @@ namespace voiceRecognition {
     //% weight=100
     //% blockId=voiceRecognition_init block="Voice Recognition setup I2C mode address 0x64"
     export function init(): void {
-
+        deviceAddress = DF2301Q_I2C_ADDR;
     }
 
     /**
@@ -369,7 +441,9 @@ namespace voiceRecognition {
     //% blockId=voiceRecognition_setVolume block="set volume|%volume"
     //% volume.min=0 volume.max=20 volume.defl=8
     export function setVolume(volume: number): void {
-
+        if (volume < 0) {volume = 0;}
+        if (volume > 20) {volume = 20;}
+        writeData([DF2301Q_I2C_REG_SET_VOLUME, volume]);
     }
 
     /**
@@ -380,7 +454,8 @@ namespace voiceRecognition {
     //% blockId=voiceRecognition_setMuteMode block="set mute mode|%mute"
     //% advanced=true
     export function setMuteMode(mute: MUTE): void {
-
+        if (mute != 0) {mute = 1;}
+        writeData([DF2301Q_I2C_REG_SET_MUTE, mute]);
     }
 
     /**
@@ -391,7 +466,7 @@ namespace voiceRecognition {
     //% blockId=voiceRecognition_setWakeTime block="set wake time|%time"
     //% time.min=0 time.max=255 time.defl=20
     export function setWakeTime(time: number): void {
-
+        writeData([DF2301Q_I2C_REG_WAKE_TIME, time]);
     }
 
     /**
@@ -402,7 +477,7 @@ namespace voiceRecognition {
     //% blockId=voiceRecognition_getWakeTime block="get wake time"
     //% advanced=true
     export function getWakeTime(): number {
-        return 100;
+        return readData(DF2301Q_I2C_REG_WAKE_TIME, 1)[0];
     }
 
     /**
@@ -413,7 +488,8 @@ namespace voiceRecognition {
     //% blockId=voiceRecognition_playByCMDID block="play|%id"
     //% id.defl=23
     export function playByCMDID(id: number): void {
-
+        writeData([DF2301Q_I2C_REG_PLAY_CMDID, id]);
+        basic.pause(1000);
     }
 
     /**
@@ -423,7 +499,7 @@ namespace voiceRecognition {
     //% weight=75
     //% blockId=voiceRecognition_getCMDID block="identify once and save the results"
     export function getCMDID(): void {
-
+        saveCmdID = readData(DF2301Q_I2C_REG_CMDID, 1)[0]
     }
 
     /**
@@ -433,7 +509,7 @@ namespace voiceRecognition {
     //% weight=70
     //% blockId=voiceRecognition_checkCMDID block="recognize it?"
     export function checkCMDID(): boolean {
-        return false;
+        return saveCmdID == 0 ? false : true;
     }
 
     /**
@@ -443,7 +519,7 @@ namespace voiceRecognition {
     //% weight=65
     //% blockId=voiceRecognition_readCMDID block="get the result"
     export function readCMDID(): number {
-        return 100;
+        return saveCmdID;
     }
 
     /**
@@ -453,7 +529,7 @@ namespace voiceRecognition {
     //% weight=60
     //% blockId=voiceRecognition_checkWord1 block="word1 %word ID"
     export function checkWord1(word: WakeupWords): number {
-        return 100;
+        return word;
     }
 
     /**
@@ -463,7 +539,7 @@ namespace voiceRecognition {
     //% weight=55
     //% blockId=voiceRecognition_checkWord2 block="word2 %word ID"
     export function checkWord2(word: LearningCommandWords): number {
-        return 100;
+        return word;
     }
 
     /**
@@ -473,7 +549,7 @@ namespace voiceRecognition {
     //% weight=50
     //% blockId=voiceRecognition_checkWord3 block="word3 %word ID"
     export function checkWord3(word: FixedCommandWords): number {
-        return 100;
+        return word;
     }
 
     /**
@@ -483,7 +559,16 @@ namespace voiceRecognition {
     //% weight=45
     //% blockId=voiceRecognition_checkWord4 block="word4 %word ID"
     export function checkWord4(word: LearningRelatedCommands): number {
-        return 100;
+        return word;
+    }
+
+    function readData(reg: number, len: number): Buffer{
+        pins.i2cWriteNumber(deviceAddress, reg, NumberFormat.UInt8BE);
+        return pins.i2cReadBuffer(deviceAddress, len, false);
+    }
+
+    function writeData(buf: number[]): void {
+        pins.i2cWriteBuffer(deviceAddress, pins.createBufferFromArray(buf));
     }
 
 }
