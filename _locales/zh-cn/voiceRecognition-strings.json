@@ -1,6 +1,6 @@
 {
-    "voiceRecognition.MUTE.OFF|block": "开",
-    "voiceRecognition.MUTE.ON|block": "关",
+    "voiceRecognition.MUTE.OFF|block": "关",
+    "voiceRecognition.MUTE.ON|block": "开",
     "voiceRecognition.WakeupWords.W1|block": "学习的唤醒词",
     "voiceRecognition.WakeupWords.W2|block": "小智你好",
     "voiceRecognition.WakeupWords.W3|block": "小爱同学",

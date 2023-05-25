@@ -1,7 +1,7 @@
 
 
 
-//% weight=100 color=#1ABC9C icon="\uf136" block="Voice Recognition (SEN0539)"
+//% weight=100 color=#1ABC9C icon="\uf136" block="Voice Recognition (SEN0539-EN)"
 namespace voiceRecognition {
 
     export enum MUTE {
@@ -335,7 +335,7 @@ namespace voiceRecognition {
         W200 = 200,
         //% blockId="voiceRecognition_W201" block="Learning command word"
         W201 = 201,
-        //% blockId="voiceRecognition_W202" block="Re_learn"
+        //% blockId="voiceRecognition_W202" block="Re-learn"
         W202 = 202,
         //% blockId="voiceRecognition_W203" block="Exit learning"
         W203 = 203,
@@ -439,10 +439,10 @@ namespace voiceRecognition {
 
     //% weight=98
     //% blockId=voiceRecognition_setVolume block="set volume|%volume"
-    //% volume.min=0 volume.max=20 volume.defl=8
+    //% volume.min=1 volume.max=7 volume.defl=4
     export function setVolume(volume: number): void {
-        if (volume < 0) {volume = 0;}
-        if (volume > 20) {volume = 20;}
+        if (volume < 1) {volume = 1;}
+        if (volume > 7) {volume = 7;}
         writeData([DF2301Q_I2C_REG_SET_VOLUME, volume]);
     }
 
@@ -527,7 +527,7 @@ namespace voiceRecognition {
      */
 
     //% weight=60
-    //% blockId=voiceRecognition_checkWord1 block="word1 %word ID"
+    //% blockId=voiceRecognition_checkWord1 block="Wake-up words %word ID"
     export function checkWord1(word: WakeupWords): number {
         return word;
     }
@@ -537,7 +537,7 @@ namespace voiceRecognition {
      */
 
     //% weight=55
-    //% blockId=voiceRecognition_checkWord2 block="word2 %word ID"
+    //% blockId=voiceRecognition_checkWord2 block="Commands for learning %word ID"
     export function checkWord2(word: LearningCommandWords): number {
         return word;
     }
@@ -547,7 +547,7 @@ namespace voiceRecognition {
      */
 
     //% weight=50
-    //% blockId=voiceRecognition_checkWord3 block="word3 %word ID"
+    //% blockId=voiceRecognition_checkWord3 block="Fixed Command Words %word ID"
     export function checkWord3(word: FixedCommandWords): number {
         return word;
     }
@@ -557,13 +557,13 @@ namespace voiceRecognition {
      */
 
     //% weight=45
-    //% blockId=voiceRecognition_checkWord4 block="word4 %word ID"
+    //% blockId=voiceRecognition_checkWord4 block="Learning-related commands %word ID"
     export function checkWord4(word: LearningRelatedCommands): number {
         return word;
     }
 
     function readData(reg: number, len: number): Buffer{
-        pins.i2cWriteNumber(deviceAddress, reg, NumberFormat.UInt8BE);
+        pins.i2cWriteNumber(deviceAddress, reg, NumberFormat.UInt8BE, true);
         return pins.i2cReadBuffer(deviceAddress, len, false);
     }
 
